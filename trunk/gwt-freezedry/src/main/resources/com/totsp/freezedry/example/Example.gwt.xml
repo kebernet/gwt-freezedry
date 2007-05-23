@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : Example.xml
+    Created on : May 21, 2007, 12:57 PM
+    Author     : rcooper
+    Description:
+        Purpose of the document follows.
+-->
+<module>
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.totsp.gwt.freezedry.FreezeDry" />
+    <entry-point class="com.totsp.freezedry.example.client.ExampleEntryPoint"/>
+</module>

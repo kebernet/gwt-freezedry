@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : FreezeDry.xml
+    Created on : May 21, 2007, 12:53 PM
+    Author     : rcooper
+    Description:
+        Purpose of the document follows.
+-->
+<module>
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.google.gwt.i18n.I18N"/>
+    <generate-with
+        class="com.totsp.gwt.freezedry.rebind.FreezerGenerator" >
+        <when-type-assignable
+        class="com.totsp.gwt.freezedry.client.Freezer" />
+    </generate-with>
+</module>
