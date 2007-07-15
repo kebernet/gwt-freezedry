@@ -46,7 +46,7 @@ public class FreezerGenerator extends Generator{
             try{
                 factory = Class.forName( factoryClassName ).newInstance();
             } catch( ClassNotFoundException nfe ){
-                logger.log( TreeLogger.ERROR, "The factory class: "+factoryClassName+" was not found on the classpath.", nfe );
+                logger.log( TreeLogger.INFO, "The factory class: "+factoryClassName+" was not found on the classpath. Creating Dictionary implementation.", null );
             } catch( InstantiationException ine ){
                 logger.log( TreeLogger.ERROR, "The factory class: "+factoryClassName+" could not be instantiated.", ine );
             } catch( IllegalAccessException ine ){
@@ -57,6 +57,7 @@ public class FreezerGenerator extends Generator{
             JClassType interfaceType = (JClassType) typeOracle.getType( typeName );
             String implementationPackage = interfaceType.getPackage().getName();
             String implementationName = interfaceType.getSimpleSourceName()+"_Impl";
+            logger.log( logger.INFO, "Checking "+ interfaceType, null );
             SerializableTypeOracleBuilder stob = new SerializableTypeOracleBuilder(
                     logger, typeOracle);
             
