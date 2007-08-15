@@ -90,8 +90,12 @@ public class FreezerGenerator extends Generator{
                     logger.log( TreeLogger.ERROR, typeName+" "+methods[i].getName()+" is not a no-arguments method.", null);
                     throw new UnableToCompleteException();
                 }
-                writer.println(
-                        methods[i].getReadableDeclaration( false, true, false, true, true)+" "+
+                String decl = methods[i].getReadableDeclaration( false, true, false, true, true);
+                if( decl.indexOf("<") > -1){
+                    decl = decl.subSequence(0, decl.indexOf("<") )+ decl.substring( decl.lastIndexOf(">")+1, decl.length());
+                }
+                writer.println( decl
+                        +" "+
                         "{" );
                 writer.indent();
                 for( int j=0; j < iface.getDeclaredMethods().length; j++ ){
@@ -120,8 +124,9 @@ public class FreezerGenerator extends Generator{
                 }
                 writer.outdent();
                 writer.println("}");
-                writer.println("}");
             }
+            writer.outdent();
+            writer.println("}");
             logger.log( TreeLogger.WARN, "Here!", null );
             context.commit( logger, printWriter );
             return implementationPackage+"."+implementationName;
