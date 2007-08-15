@@ -14,6 +14,7 @@ import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.server.rpc.impl.ServerSerializableTypeOracle;
 import com.google.gwt.user.server.rpc.impl.ServerSerializableTypeOracleImpl;
 import com.google.gwt.user.server.rpc.impl.ServerSerializationStreamWriter;
+import java.util.Collection;
 
 /**
  *
@@ -35,6 +36,13 @@ public class SimpleSerializer {
     private  SimpleSerializer() {
     }
     public static String serializeObject(IsSerializable object) throws SerializationException {
+        ServerSerializationStreamWriter stream = new ServerSerializationStreamWriter(
+                serializableTypeOracle);
+        stream.prepareToWrite();
+        stream.serializeValue( object, object.getClass() );
+        return stream.toString();
+    }
+    public static String serializeCollection(Collection object) throws SerializationException {
         ServerSerializationStreamWriter stream = new ServerSerializationStreamWriter(
                 serializableTypeOracle);
         stream.prepareToWrite();

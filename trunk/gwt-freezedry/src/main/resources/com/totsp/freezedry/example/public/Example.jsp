@@ -12,7 +12,7 @@
     <title></title>
     <script language='javascript' src='com.totsp.freezedry.example.Example.nocache.js'></script>
     <script language='javascript'>
-        var com_totsp_freezedry_example_client_DictionaryFreezer = {
+        com_totsp_freezedry_example_client_DictionaryFreezer = {
         getObject: unescape( "<%=URLEncoder.encode( SimpleSerializer.serializeObject( o ), "UTF-8" )%>" )
         };
     </script>
